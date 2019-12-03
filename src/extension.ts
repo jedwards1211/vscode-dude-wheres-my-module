@@ -1,28 +1,85 @@
-// The module 'vscode' contains the VS Code extensibility API
-// Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode'
+import Client from 'dude-wheres-my-module/Client'
+import findRoot from 'find-root'
+import jscodeshift from 'jscodeshift'
+import addImports from 'jscodeshift-add-imports'
+import {
+  ImportDeclaration,
+  VariableDeclaration,
+} from 'dude-wheres-my-module/ASTTypes'
+const j = jscodeshift.withParser('babylon')
 
-// this method is called when your extension is activated
-// your extension is activated the very first time the command is executed
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
+function getSource(ast: ImportDeclaration | VariableDeclaration): string {
+  if (ast.type === 'ImportDeclaration') {
+    return ast.source.value
+  }
+  if (ast.type === 'VariableDeclaration') {
+    const declaration: any = ast.declarations[0]
+    if (declaration && declaration.init.type === 'CallExpression') {
+      return declaration.init.arguments[0].value
+    }
+  }
+  return '?'
+}
+
 export function activate(context: vscode.ExtensionContext): void {
-  // Use the console to output diagnostic information (console.log) and errors (console.error)
-  // This line of code will only be executed once when your extension is activated
-  /* eslint-disable no-console */
-  console.log(
-    'Congratulations, your extension "vscode-dude-wheres-my-module" is now active!'
-  )
-  /* eslint-enable no-console */
-
-  // The command has been defined in the package.json file
-  // Now provide the implementation of the command with registerCommand
-  // The commandId parameter must match the command field in package.json
   const disposable = vscode.commands.registerCommand(
-    'extension.helloWorld',
-    () => {
-      // The code you place here will be executed every time your command is executed
+    'extension.autoimport',
+    async (): Promise<void> => {
+      const { window } = vscode
+      const { activeTextEditor: editor } = window
+      if (!editor) return
+      const code = editor.document.getText()
+      const file = editor.document.fileName
 
-      // Display a message box to the user
-      vscode.window.showInformationMessage('Hello World!')
+      const client = new Client(findRoot(file))
+
+      const suggestions = await window.withProgress(
+        {
+          location: vscode.ProgressLocation.Window,
+        },
+        () => client.suggest({ code, file })
+      )
+
+      const root = j(code)
+      for (const key in suggestions) {
+        const { identifier, start, context, suggested } = suggestions[key]
+        try {
+          if (!suggested.length) {
+            continue
+          } else if (suggested.length === 1) {
+            addImports(root, suggested[0].ast as any)
+          } else {
+            const selected = await window.showQuickPick(
+              suggested.map(({ code, ast }) => ({
+                ast,
+                label: getSource(ast),
+                detail: code,
+              }))
+            )
+            if (selected) addImports(root, selected.ast as any)
+          }
+        } catch (error) {
+          console.error(error.stack) // eslint-disable-line no-console
+        }
+      }
+
+      const newText = root.toSource()
+
+      const oldText = editor.document.getText()
+      if (newText !== oldText) {
+        editor.edit(edit =>
+          edit.replace(
+            new vscode.Range(
+              editor.document.positionAt(0),
+              editor.document.positionAt(oldText.length)
+            ),
+            newText
+          )
+        )
+      }
     }
   )
 
