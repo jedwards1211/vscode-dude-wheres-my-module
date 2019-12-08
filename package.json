@@ -19,6 +19,14 @@
         "command": "extension.autoimport",
         "title": "Add Missing Imports"
       }
+    ],
+    "keybindings": [
+      {
+        "command": "extension.autoimport",
+        "key": "ctrl+alt+i",
+        "mac": "ctrl+cmd+i",
+        "when": "editorTextFocus"
+      }
     ]
   },
   "scripts": {
