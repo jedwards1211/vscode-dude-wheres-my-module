@@ -7,6 +7,8 @@ import {
   ImportDeclaration,
   VariableDeclaration,
 } from 'dude-wheres-my-module/ASTTypes'
+import { SuggestedImportsResult } from 'dude-wheres-my-module/getSuggestedImports'
+import throttle from 'lodash/throttle'
 const j = jscodeshift.withParser('babylon')
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
@@ -38,9 +40,37 @@ export function activate(context: vscode.ExtensionContext): void {
 
       const suggestions = await window.withProgress(
         {
-          location: vscode.ProgressLocation.Window,
+          location: vscode.ProgressLocation.Notification,
         },
-        () => client.suggest({ code, file })
+        async (
+          progress: vscode.Progress<{ increment?: number; message?: string }>
+        ): Promise<SuggestedImportsResult> => {
+          const message = 'Starting dude-wheres-my-module...'
+          let prev = 0
+          // work around stupid progress debouncing in VSCode
+          // https://github.com/microsoft/vscode/issues/86131
+          const handleProgress = throttle(
+            (next: { completed: number; total: number }) => {
+              const amount = (next.completed / next.total) * 100
+              const increment = amount - prev
+              prev = amount
+              progress.report({
+                increment,
+                message: `Starting dude-wheres-my-module (${next.completed}/${
+                  next.total
+                })...`,
+              })
+            },
+            110
+          )
+          progress.report({ message })
+          client.on('progress', handleProgress)
+          try {
+            return await client.suggest({ code, file })
+          } finally {
+            client.removeListener('progress', handleProgress)
+          }
+        }
       )
 
       const root = j(code)
@@ -55,8 +85,7 @@ export function activate(context: vscode.ExtensionContext): void {
             const selected = await window.showQuickPick(
               suggested.map(({ code, ast }) => ({
                 ast,
-                label: getSource(ast),
-                detail: code,
+                label: code,
               }))
             )
             if (selected) addImports(root, selected.ast as any)

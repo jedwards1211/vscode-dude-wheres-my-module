@@ -1332,6 +1332,11 @@
   resolved "https://registry.yarnpkg.com/@types/json-schema/-/json-schema-7.0.3.tgz#bdfd69d61e464dcc81b25159c270d75a73c1a636"
   integrity sha512-Il2DtDVRGDcqjDtE+rF8iqg1CArehSK84HZJCT7AMITlyXRBpuPhqGLDQMowraqqu1coEaimg4ZOqggt6L6L+A==
 
+"@types/lodash@^4.14.149":
+  version "4.14.149"
+  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.149.tgz#1342d63d948c6062838fbf961012f74d4e638440"
+  integrity sha512-ijGqzZt/b7BfzcK9vTrS6MFljQRPn5BFWOx8oE0GYxribu6uV+aA9zZuXI1zc/etK9E8nrgdoF2+LgUw7+9tJQ==
+
 "@types/minimatch@*":
   version "3.0.3"
   resolved "https://registry.yarnpkg.com/@types/minimatch/-/minimatch-3.0.3.tgz#3dca0e3f33b200fc7d1139c0cd96c1268cadfd9d"
@@ -3805,9 +3810,9 @@ dotenv@^5.0.1:
   integrity sha512-4As8uPrjfwb7VXC+WnLCbXK7y+Ueb2B3zgNCePYfhxS1PYeaO1YTeplffTEcbfLhvFNGLAz90VvJs9yomG7bow==
 
 dude-wheres-my-module@^1.0.4:
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/dude-wheres-my-module/-/dude-wheres-my-module-1.0.5.tgz#9049cbda5b355419fd92868dec229177f8ba4623"
-  integrity sha512-E1LKNhDScD9sNQM+r55a4B2OzULY2m5App3yZP+w5eZRBplWjNbpImuciIyoFViwMZeuZe+/ZK3cYwqqcLiCgg==
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/dude-wheres-my-module/-/dude-wheres-my-module-1.0.6.tgz#fd57e48c53b744bba12e5e5ee64446b84267c179"
+  integrity sha512-DO5Tup3m8qV+GdPLA9r71kj0QQK0edlfmw/8AIkXCWi1hmzxhZ9QoW1QuhFcvMGEEG5fTcA2TCqGu4kEq6MtvQ==
   dependencies:
     "@babel/polyfill" "^7.0.0"
     "@babel/runtime" "^7.1.5"
@@ -7062,10 +7067,15 @@ ms@2.0.0:
   resolved "https://registry.yarnpkg.com/ms/-/ms-2.0.0.tgz#5608aeadfc00be6c2901df5f9861788de0d597c8"
   integrity sha1-VgiurfwAvmwpAd9fmGF4jeDVl8g=
 
-ms@2.1.1, ms@^2.0.0, ms@^2.1.1:
+ms@2.1.1, ms@^2.0.0:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/ms/-/ms-2.1.1.tgz#30a5864eb3ebb0a66f2ebe6d727af06a09d86e0a"
   integrity sha512-tgp+dl5cGk28utYktBsrFqA7HKgrhgPsg6Z/EfhWI4gl1Hwq8B/GmY/0oXZ6nF8hDVesS/FpnYaD/kOWhYQvyg==
+
+ms@^2.1.1:
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/ms/-/ms-2.1.2.tgz#d09d1f357b443f493382a8eb3ccd183872ae6009"
+  integrity sha512-sGkPx+VjMtmA6MX27oA4FBFELFCZZ4S4XqeGOXCv68tT+jb3vk/RyaKWP0PTKyWtmLSM0b+adUTEvbs1PEaH2w==
 
 mute-stream@0.0.7, mute-stream@~0.0.4:
   version "0.0.7"
