@@ -46,6 +46,7 @@
     "open:coverage": "open coverage/lcov-report/index.html",
     "semantic-release": "semantic-release"
   },
+  "publisher": "vscode-dude-wheres-my-module",
   "release": {
     "verifyConditions": [
       "semantic-release-vsce",
