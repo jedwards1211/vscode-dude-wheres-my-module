@@ -1162,6 +1162,11 @@
   dependencies:
     find-up "^2.1.0"
 
+"@jcoreio/poll@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@jcoreio/poll/-/poll-2.0.0.tgz#af5a27bd6522ed52318ebd1c6b90285e224f3774"
+  integrity sha512-kT1eIFy667yw4PU/ci15HXN5y3kQf06e8cyqnkzR3CJhQeQZKM4KfRaE0qW3jCGMQvytB6XdQdUIgZU0wzgPLQ==
+
 "@jcoreio/typed-event-emitter@^1.0.0":
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@jcoreio/typed-event-emitter/-/typed-event-emitter-1.0.0.tgz#6ebd3e0c1a6423a77ad9964e779cf156ae65c992"
@@ -3896,13 +3901,14 @@ dotenv@^5.0.1:
   resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-5.0.1.tgz#a5317459bd3d79ab88cff6e44057a6a3fbb1fcef"
   integrity sha512-4As8uPrjfwb7VXC+WnLCbXK7y+Ueb2B3zgNCePYfhxS1PYeaO1YTeplffTEcbfLhvFNGLAz90VvJs9yomG7bow==
 
-dude-wheres-my-module@^1.0.4:
-  version "1.0.6"
-  resolved "https://registry.yarnpkg.com/dude-wheres-my-module/-/dude-wheres-my-module-1.0.6.tgz#fd57e48c53b744bba12e5e5ee64446b84267c179"
-  integrity sha512-DO5Tup3m8qV+GdPLA9r71kj0QQK0edlfmw/8AIkXCWi1hmzxhZ9QoW1QuhFcvMGEEG5fTcA2TCqGu4kEq6MtvQ==
+dude-wheres-my-module@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/dude-wheres-my-module/-/dude-wheres-my-module-1.1.0.tgz#c5fb8ff47273228a00fa92b609754a9b7255116f"
+  integrity sha512-p7ViWc2FdTBE+ZpgeVpNjj8eo8csxNeeS0nZL7V4BwZNPp13LTMGqg85fkUebomBAgBpa3jphVWUTCwcbeDIEA==
   dependencies:
     "@babel/polyfill" "^7.0.0"
     "@babel/runtime" "^7.1.5"
+    "@jcoreio/poll" "^2.0.0"
     "@jcoreio/typed-event-emitter" "^1.0.0"
     JSONStream "^1.3.5"
     ansi-escapes "^3.1.0"
@@ -3918,7 +3924,7 @@ dude-wheres-my-module@^1.0.4:
     jscodeshift "^0.5.1"
     lockfile "^1.0.4"
     lodash "^4.17.11"
-    p-event "^2.1.0"
+    p-event "^4.1.0"
     semver "^6.3.0"
     touch "^3.1.0"
     yargs "^14.0.0"
@@ -7988,10 +7994,10 @@ output-file-sync@^2.0.0:
     is-plain-obj "^1.1.0"
     mkdirp "^0.5.1"
 
-p-event@^2.1.0:
-  version "2.3.1"
-  resolved "https://registry.yarnpkg.com/p-event/-/p-event-2.3.1.tgz#596279ef169ab2c3e0cae88c1cfbb08079993ef6"
-  integrity sha512-NQCqOFhbpVTMX4qMe8PF8lbGtzZ+LCiN7pcNrb/413Na7+TRoe1xkKUzuWa/YEJdGQ0FvKtj35EEbDoVPO2kbA==
+p-event@^4.1.0:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/p-event/-/p-event-4.1.0.tgz#e92bb866d7e8e5b732293b1c8269d38e9982bf8e"
+  integrity sha512-4vAd06GCsgflX4wHN1JqrMzBh/8QZ4j+rzp0cd2scXRwuBEv+QR3wrVA5aLhWDLw4y2WgDKvzWF3CCLmVM1UgA==
   dependencies:
     p-timeout "^2.0.1"
 
