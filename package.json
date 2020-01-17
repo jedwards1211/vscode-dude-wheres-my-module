@@ -3,6 +3,7 @@
   "version": "0.0.0-development",
   "displayName": "Dude, Where's My Module?",
   "description": "Automatic import for JS/Flow",
+  "publisher": "vscode-dude-wheres-my-module",
   "engines": {
     "vscode": "^1.40.0"
   },
@@ -46,7 +47,6 @@
     "open:coverage": "open coverage/lcov-report/index.html",
     "semantic-release": "semantic-release"
   },
-  "publisher": "vscode-dude-wheres-my-module",
   "release": {
     "verifyConditions": [
       "semantic-release-vsce",
