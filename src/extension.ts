@@ -5,7 +5,7 @@ import jscodeshift from 'jscodeshift'
 import addImports from 'jscodeshift-add-imports'
 import { SuggestedImportsResult } from 'dude-wheres-my-module/getSuggestedImports'
 import throttle from 'lodash/throttle'
-const j = jscodeshift.withParser('babylon')
+import chooseJSCodeshiftParser from 'jscodeshift-choose-parser'
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
@@ -54,6 +54,8 @@ export function activate(context: vscode.ExtensionContext): void {
         }
       )
 
+      const parser = chooseJSCodeshiftParser(file) || 'babylon'
+      const j = jscodeshift.withParser(parser)
       const root = j(code)
       for (const key in suggestions) {
         const { suggested } = suggestions[key]
