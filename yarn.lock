@@ -3864,10 +3864,10 @@ dotenv@^5.0.1:
   resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-5.0.1.tgz#a5317459bd3d79ab88cff6e44057a6a3fbb1fcef"
   integrity sha512-4As8uPrjfwb7VXC+WnLCbXK7y+Ueb2B3zgNCePYfhxS1PYeaO1YTeplffTEcbfLhvFNGLAz90VvJs9yomG7bow==
 
-dude-wheres-my-module@^1.1.6:
-  version "1.1.6"
-  resolved "https://registry.yarnpkg.com/dude-wheres-my-module/-/dude-wheres-my-module-1.1.6.tgz#cf89a1e3af8bf08a47001723e6a494bfab207a82"
-  integrity sha512-CxzYBCowk+hPbM8cfEi7VHi/SzZK8aJusGwiqdm6xItfcbR/Y/M5TXoJ0h98mixzq+kCQ6tLbNQxVLqHSDeeRg==
+dude-wheres-my-module@^1.1.7:
+  version "1.1.7"
+  resolved "https://registry.yarnpkg.com/dude-wheres-my-module/-/dude-wheres-my-module-1.1.7.tgz#31eae47b156d2ee9f38f5a78c6dcb5525cd544ee"
+  integrity sha512-I4fUw7cWxouVHE0mpERUbCr9/S+yewDCsr0y9INjcs4kwDBQpECPXpDFv31ZrP/xz725JfXp8ENZwmhEc20vLA==
   dependencies:
     "@babel/polyfill" "^7.0.0"
     "@babel/runtime" "^7.1.5"
