@@ -29,7 +29,6 @@ export function activate(context: vscode.ExtensionContext): void {
         const { window } = vscode
         const { activeTextEditor: editor } = window
         if (!editor) throw new Error(`no active editor found`)
-        const code = editor.document.getText()
         const file = editor.document.fileName
         const projectDir = findRoot(file)
         channel.appendLine(
@@ -67,6 +66,8 @@ export function activate(context: vscode.ExtensionContext): void {
             progress.report({ message })
             client.on('progress', handleProgress)
             try {
+              await client.waitUntilReady()
+              const code = editor.document.getText()
               return await client.suggest({ code, file })
             } finally {
               client.removeListener('progress', handleProgress)
@@ -79,7 +80,7 @@ export function activate(context: vscode.ExtensionContext): void {
 
         const parser = chooseJSCodeshiftParser(file) || 'babylon'
         const j = jscodeshift.withParser(parser)
-        const root = j(code)
+        const root = j(editor.document.getText())
         for (const key in suggestions) {
           const { suggested } = suggestions[key]
           try {
