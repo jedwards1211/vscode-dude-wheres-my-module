@@ -73,7 +73,9 @@ export function activate(context: vscode.ExtensionContext): void {
             }
           }
         )
-        channel.appendLine(JSON.stringify(suggestions))
+        channel.appendLine(
+          `suggestions for ${file}: ${JSON.stringify(suggestions)}`
+        )
 
         const parser = chooseJSCodeshiftParser(file) || 'babylon'
         const j = jscodeshift.withParser(parser)
