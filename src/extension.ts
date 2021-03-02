@@ -43,10 +43,12 @@ export function activate(context: vscode.ExtensionContext): void {
         const suggestions = await window.withProgress(
           {
             location: vscode.ProgressLocation.Notification,
+            cancellable: true,
           },
           async (
-            progress: vscode.Progress<{ increment?: number; message?: string }>
-          ): Promise<SuggestedImportsResult> => {
+            progress: vscode.Progress<{ increment?: number; message?: string }>,
+            token: vscode.CancellationToken
+          ): Promise<SuggestedImportsResult | null> => {
             const message = 'Starting dude-wheres-my-module...'
             let prev = 0
             // work around stupid progress debouncing in VSCode
@@ -66,14 +68,29 @@ export function activate(context: vscode.ExtensionContext): void {
             progress.report({ message })
             client.on('progress', handleProgress)
             try {
-              await client.waitUntilReady()
-              const code = editor.document.getText()
-              return await client.suggest({ code, file })
+              return await Promise.race([
+                new Promise(
+                  (resolve: (value: SuggestedImportsResult | null) => void) => {
+                    token.onCancellationRequested(() => resolve(null))
+                  }
+                ),
+                (async (): Promise<SuggestedImportsResult> => {
+                  channel.appendLine(`calling client.waitUntilReady...`)
+                  await client.waitUntilReady()
+                  const code = editor.document.getText()
+                  channel.appendLine(`calling client.suggest...`)
+                  return await client.suggest({ code, file })
+                })(),
+              ])
             } finally {
               client.removeListener('progress', handleProgress)
             }
           }
         )
+        if (suggestions == null) {
+          channel.appendLine(`operation canceled`)
+          return
+        }
         channel.appendLine(
           `suggestions for ${file}: ${JSON.stringify(suggestions)}`
         )
