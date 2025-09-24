@@ -13,14 +13,11 @@ jobs:
               "//registry.npmjs.org/:_authToken=$NPM_TOKEN" \
               "registry=https://registry.npmjs.org/"
       - run:
-          name: Corepack enable
-          command: sudo corepack enable
-      - run:
           name: Install Dependencies
-          command: pnpm install --no-frozen-lockfile
+          command: npm install
       - run:
           name: build
-          command: pnpm run vscode:prepublish
+          command: npm run vscode:prepublish
       - run:
           name: release
-          command: pnpm run semantic-release
+          command: npm run semantic-release

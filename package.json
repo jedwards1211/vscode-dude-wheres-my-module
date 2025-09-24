@@ -138,6 +138,7 @@
     "@types/mocha": "^5.2.7",
     "@types/node": "^20",
     "@types/vscode": "^1.52.0",
+    "@vscode/vsce": "^3.6.1",
     "babel-eslint": "^10.1.0",
     "babel-plugin-istanbul": "^6.0.0",
     "chai": "^4.2.0",
