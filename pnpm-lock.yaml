@@ -137,8 +137,8 @@ devDependencies:
     specifier: ^13.1.0
     version: 13.1.0
   prettier:
-    specifier: ^1.15.2
-    version: 1.15.2
+    specifier: ^3.6.2
+    version: 3.6.2
   prettier-eslint:
     specifier: ^8.8.2
     version: 8.8.2
@@ -7640,7 +7640,7 @@ packages:
       indent-string: 3.2.0
       lodash.merge: 4.6.2
       loglevel-colored-level-prefix: 1.0.0
-      prettier: 1.15.2
+      prettier: 1.19.1
       pretty-format: 23.6.0
       require-relative: 0.8.7
       typescript: 2.9.2
@@ -7650,9 +7650,15 @@ packages:
       - supports-color
     dev: true
 
-  /prettier@1.15.2:
-    resolution: {integrity: sha512-YgPLFFA0CdKL4Eg2IHtUSjzj/BWgszDHiNQAe0VAIBse34148whfdzLagRL+QiKS+YfK5ftB6X4v/MBw8yCoug==}
+  /prettier@1.19.1:
+    resolution: {integrity: sha512-s7PoyDv/II1ObgQunCbB9PdLmUcBZcnWOcxDh7O0N/UwDEsHyqkW+Qh28jW+mVuCdx7gLB0BotYI1Y6uI9iyew==}
     engines: {node: '>=4'}
+    hasBin: true
+    dev: true
+
+  /prettier@3.6.2:
+    resolution: {integrity: sha512-I7AIg5boAr5R0FFtJ6rCfD+LFsWHp81dolrFD8S79U9tb8Az2nGrJncnMSnys+bpQJfRUzqs9hnA81OAA3hCuQ==}
+    engines: {node: '>=14'}
     hasBin: true
     dev: true
 
