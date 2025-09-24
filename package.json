@@ -164,7 +164,7 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.12.5",
-    "dude-wheres-my-module": "^2.0.3",
+    "dude-wheres-my-module": "^2.0.8",
     "find-root": "^1.1.0",
     "jscodeshift": "^0.10.0",
     "jscodeshift-add-imports": "^1.0.5",
