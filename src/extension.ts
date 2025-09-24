@@ -61,7 +61,9 @@ export function activate(context: vscode.ExtensionContext): void {
                 prev = amount
                 progress.report({
                   increment,
-                  message: `Starting dude-wheres-my-module (${next.completed}/${next.total})...`,
+                  message: `Starting dude-wheres-my-module (${next.completed}/${
+                    next.total
+                  })...`,
                 })
               },
               110

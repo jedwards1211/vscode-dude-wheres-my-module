@@ -5,6 +5,7 @@
   "description": "Automatic import for JS/Flow",
   "publisher": "vscode-dude-wheres-my-module",
   "engines": {
+    "node": "^20.10.0",
     "vscode": "^1.52.0"
   },
   "categories": [
@@ -117,9 +118,6 @@
     "url": "https://github.com/jedwards1211/vscode-dude-wheres-my-module/issues"
   },
   "homepage": "https://github.com/jedwards1211/vscode-dude-wheres-my-module#readme",
-  "resolutions": {
-    "@types/node": "^12.0.0"
-  },
   "devDependencies": {
     "@babel/cli": "^7.12.10",
     "@babel/core": "^7.12.10",
@@ -138,7 +136,7 @@
     "@types/jscodeshift": "^0.7.2",
     "@types/lodash": "^4.14.149",
     "@types/mocha": "^5.2.7",
-    "@types/node": "^12.12.6",
+    "@types/node": "^20",
     "@types/vscode": "^1.52.0",
     "babel-eslint": "^10.1.0",
     "babel-plugin-istanbul": "^6.0.0",
@@ -162,7 +160,7 @@
     "rimraf": "^2.6.0",
     "semantic-release": "^15.13.31",
     "semantic-release-vsce": "^2.2.8",
-    "typescript": "^3.7.2"
+    "typescript": "^5.9.2"
   },
   "dependencies": {
     "@babel/runtime": "^7.12.5",
