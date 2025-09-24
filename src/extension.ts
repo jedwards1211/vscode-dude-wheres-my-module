@@ -16,7 +16,8 @@ export function activate(context: vscode.ExtensionContext): void {
   const logErrors = (fn: () => Promise<void>) => async (): Promise<void> => {
     try {
       await fn()
-    } catch (error) {
+    } catch (e) {
+      const error: any = e
       channel.appendLine(error.stack || error.message || String(error))
       throw error
     }
@@ -114,7 +115,8 @@ export function activate(context: vscode.ExtensionContext): void {
               )
               if (selected) addImports(root, selected.ast as any)
             }
-          } catch (error) {
+          } catch (e) {
+            const error: any = e
             channel.appendLine(error.stack || error.message || String(error))
           }
         }
